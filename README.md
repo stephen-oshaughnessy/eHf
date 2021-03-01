@@ -23,4 +23,6 @@ pip install numpy
 python simple-example.py # generates an eHf vector for a simple input string
 ```
 ```sh
-python generate-ehf.py -p <path-to-data># generates an eHf vector and corresponding labels for use as a dataset 
+python generate-ehf.py -p <path-to-data> # generates an eHf vector and corresponding labels for use as a dataset 
+Note: assumes data is in folders named after each class
+```
