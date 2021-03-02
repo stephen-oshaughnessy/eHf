@@ -1,2 +1,2 @@
 
-from .ehf import compress
+from .ehf import ehf_set
