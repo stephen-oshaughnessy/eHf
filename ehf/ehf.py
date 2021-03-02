@@ -3,9 +3,18 @@ from collections import Counter
 import numpy as np
 
 
+def k_smallest(array):
+    """ Returns a dataset of uniform vectors. Each vector is reduced to the min length vector
+       - this is necessary if you are passing the feature set to a classification algorithm """
+
+    for k in array:
+        del k[min(map(len, array)):]
+    return array
+
+
 def ehf_set(data):
     """input: any data sequence, including files
-       output: numpy array of Huffman codewords"""
+       output: array of Huffman codewords"""
 
     # get the frequencies of each symbol
     frequency = Counter(data)
@@ -22,6 +31,6 @@ def ehf_set(data):
             value[1] = '1' + value[1]
         heapq.heappush(heap, [rightchild[0] + leftchild[0]] + rightchild[1:] + leftchild[1:])
 
-    # sorted numpy array of signed int Huffman codewords
+    # sorted array of signed int Huffman codewords
     codewords = [np.int32(i) for i in np.array(sorted(heapq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p)))[:, 1]]
     return codewords
